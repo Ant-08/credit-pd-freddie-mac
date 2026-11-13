@@ -1,8 +1,12 @@
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-RAW_DIR = ROOT / "data" / "raw"
-PROCESSED_DIR = ROOT / "data" / "processed"
+# Data can live outside the project (e.g. outside a cloud-synced folder):
+# export CREDIT_PD_DATA_DIR=~/data/credit-pd
+DATA_DIR = Path(os.environ.get("CREDIT_PD_DATA_DIR", ROOT / "data")).expanduser()
+RAW_DIR = DATA_DIR / "raw"
+PROCESSED_DIR = DATA_DIR / "processed"
 
 # Default definition: 90+ days past due (current_loan_delinquency_status >= 3)
 # observed within 12 months after the observation date.
