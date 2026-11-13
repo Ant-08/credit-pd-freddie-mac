@@ -1,0 +1,9 @@
+---
+description: Project conventions for credit-pd-freddie-mac
+alwaysApply: true
+---
+- Goal: 12-month probability-of-default model on Freddie Mac data, validated like a bank model (discrimination, calibration, stability, out-of-time).
+- Code and README in English. Python 3.11+, managed with uv (`uv sync`, `uv run ...`). Lint/format with ruff. Tests with pytest.
+- Never commit raw or processed data. Never commit credentials.
+- Split by time (out-of-time), never randomly. No leakage: features only from information known at the observation date.
+- Every modelling claim in the README must be backed by a number produced by the code (log it in MLflow).
